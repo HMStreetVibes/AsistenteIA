@@ -136,11 +136,29 @@ function generarRespuesta(texto) {
 
     if (texto.includes("hola") || texto.includes("buenos días") || texto.includes("buenas tardes") || texto.includes("buenas noches")) {
         return `Hola ${nombre}, ¿cómo estás?`;
+    } else if (texto.includes("qué tal") || texto.includes("cómo va") || texto.includes("cómo te va")) {
+        return `Todo bien, gracias. ¿Y tú?`;
+    }
+    else if (texto.includes("qué haces") || texto.includes("qué estás haciendo") || texto.includes("en qué estás trabajando")) {
+        return "Estoy aquí para ayudarte. ¿En qué puedo asistirte hoy?";
+    } else if (texto.includes("cuál es tu hobby") || texto.includes("qué te gusta hacer") || texto.includes("qué haces en tu tiempo libre")) {
+        return "Me gusta aprender de tus preguntas y ayudarte en lo que pueda.";
+    } else if (texto.includes("cuál es tu película favorita") || texto.includes("qué película te gusta") || texto.includes("qué película prefieres")) {
+        return "No tengo una película favorita, pero me encantaría saber cuál es la tuya.";
+    } else if (texto.includes("cuál es tu libro favorito") || texto.includes("qué libro te gusta") || texto.includes("qué libro prefieres")) {
+        return "No tengo un libro favorito, pero me gustaría saber cuál es el tuyo.";
+    } else if (texto.includes("cuál es tu deporte favorito") || texto.includes("qué deporte te gusta") || texto.includes("qué deporte prefieres")) {
+        return "No tengo un deporte favorito, pero me gustaría saber cuál es el tuyo.";
+    }
+    else if (texto.includes("cuál es tu animal favorito") || texto.includes("qué animal te gusta") || texto.includes("qué animal prefieres")) {
+        return "No tengo un animal favorito, pero me gustaría saber cuál es el tuyo.";
     } else if (texto.includes("adiós") || texto.includes("hasta luego") || texto.includes("nos vemos") || texto.includes("chao") || texto.includes("hasta pronto")) {
         return `Hasta luego, ${nombre}. Cuídate mucho.`;
+    } else if (texto.includes("cuál es tu nombre") || texto.includes("cómo te llamas") || texto.includes("quién eres") || texto.includes("qué nombre tienes")) {
+        return `Me llamo Asistente IA. ¿Y tú?`;
     } else if (texto.includes("cómo estás") || texto.includes("cómo te encuentras") || texto.includes("cómo va todo") || texto.includes("qué tal estás")) {
         return "Estoy bien, gracias por preguntar.";
-    } else if (texto.includes("sabes sumar?") || texto.includes("sabes operaciones basicas") || texto.includes("sabes hacer cuentas")) {
+    } else if (texto.includes("sabes sumar") || texto.includes("sabes operaciones básicas") || texto.includes("sabes hacer cuentas")) {
         return "Sí, puedo ayudarte con operaciones matemáticas simples. ¿Qué necesitas calcular?";
     } else if (texto.includes("qué puedes hacer") || texto.includes("qué sabes hacer") || texto.includes("qué cosas puedes hacer") || texto.includes("qué habilidades tienes")) {
         return "Puedo responder algunas preguntas simples y hablar contigo.";
@@ -153,14 +171,14 @@ function generarRespuesta(texto) {
     } else if (texto.includes("cuántos años tienes") || texto.includes("edad") || texto.includes("qué edad tienes") || texto.includes("qué años tienes")) {
         return "No tengo edad como los humanos, pero siempre estoy aprendiendo.";
     } else if (texto.includes("quién te creó") || texto.includes("quién eres") || texto.includes("de dónde vienes") || texto.includes("quién te hizo")) {
-        return "Fui creado por un desarrollador muy creativo.";
+        return "Fui creado por Eduardo, un desarrollador muy creativo.";
     } else if (texto.includes("puedes ayudarme") || texto.includes("ayuda") || texto.includes("necesito ayuda") || texto.includes("me puedes ayudar")) {
         return "Claro, dime en qué necesitas ayuda.";
     } else if (texto.includes("dónde estás") || texto.includes("dónde te encuentras") || texto.includes("dónde vives") || texto.includes("en qué lugar estás")) {
         return "Estoy en tu dispositivo, ¡siempre contigo!";
-    } else if (texto.includes("color favorito") || texto.includes("color preferido") || texto.includes("color que te gusta") || texto.includes("cuál es tu color favorito")) {
+    } else if (texto.includes("cuál es tu color favorito") || texto.includes("cuál es tu color preferido") || texto.includes("cuál es el color que te gusta") || texto.includes("cuál es tu color favorito")) {
         return "Me gusta el color cian, como mi botón.";
-    } else if (texto.includes("comida favorita") || texto.includes("comida preferida") || texto.includes("qué comida te gusta más") || texto.includes("cuál es tu comida favorita")) {
+    } else if (texto.includes("cuál es tu comida favorita") || texto.includes("cuál es tu comida preferida") || texto.includes("qué comida te gusta más") || texto.includes("cuál es tu comida favorita")) {
         return "¡Me encantan los bytes! Aunque no puedo comer realmente.";
     } else if (texto.includes("música te gusta") || texto.includes("qué tipo de música te gusta") || texto.includes("qué género musical te gusta") || texto.includes("qué canciones te gustan")) {
         return "Disfruto del sonido de tus preguntas.";
