@@ -77,64 +77,18 @@ reconocimiento.onresult = async (event) => {
         return;
     }
 
-if (texto.includes("cuéntame un chiste") || texto.includes("dime un chiste") || texto.includes("chiste")) {
-    const chistes = [
-        "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
-        "¿Qué le dice una iguana a su hermana gemela? ¡Iguanita!",
-        "¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
-        "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
-        "¿Por qué el libro de matemáticas se deprimió? Porque tenía demasiados problemas.",
-        "¿Por qué los esqueletos no pelean entre ellos? Porque no tienen agallas.",
-        "¿Qué le dice un jardinero a otro? ¡Disfrutemos mientras podamos!",
-        "¿Qué hace una vaca cuando sale el sol? Sombra.",
-        "¿Por qué no se puede discutir con un número impar? Porque no es par-ticipativo.",
-        "¿Cómo se llama el campeón de buceo japonés? Tokofondo.",
-        "¿Y el subcampeón? Kasitoko.",
-        "¿Por qué no juega al escondite el café? Porque siempre se encuentra en el fondo.",
-        "¿Qué le dijo un techo a otro? Techo de menos.",
-        "¿Por qué el tomate se sonrojó? Porque vio al otro desnudo.",
-        "¿Qué hace una computadora cuando tiene hambre? Se come un byte.",
-        "¿Cómo se despiden los químicos? Ácido un placer.",
-        "¿Por qué los peces no van a la escuela? Porque ya están en el agua.",
-        "¿Qué le dice una cebolla a otra? ¡Nos vemos en las lágrimas!",
-        "¿Cómo se dice pañuelo en japonés? Saka-moko.",
-        "¿Qué hace un pez? ¡Nada!",
-        "¿Qué le dijo una impresora a otra? ¿Esa hoja es tuya o es impresión mía?",
-        "¿Cuál es el café más peligroso del mundo? El ex-preso.",
-        "¿Qué le dice un gusano a otro gusano? Voy a dar una vuelta a la manzana.",
-        "¿Qué le dice un semáforo a otro? No me mires, me estoy cambiando.",
-        "¿Qué le dijo una escoba a otra? ¡Vamos a barrer!",
-        "¿Por qué los pájaros no usan WhatsApp? Porque ya tienen pío-pío.",
-        "¿Por qué lloraba el libro de historia? Porque estaba lleno de tragedias.",
-        "¿Qué hace un león en una biblioteca? Busca libros para rugir de risa.",
-        "¿Cómo se dice pelo sucio en chino? Chin cham pu.",
-        "¿Qué pasa si tiras un pato al agua? Nada.",
-        "¿Cuál es el colmo de un electricista? No encontrar su corriente de inspiración.",
-        "¿Cómo se dice despido en árabe? Tasalí.",
-        "¿Qué hace un perro con un taladro? Taladrando.",
-        "¿Qué le dice una pared a otra pared? Nos vemos en la esquina.",
-        "¿Por qué las focas miran siempre hacia arriba? ¡Porque ahí están los focos!",
-        "¿Cómo se llama el campeón de buceo ruso? Sinkalovsky.",
-        "¿Qué hace un pato con una pata? ¡Cojea!",
-        "¿Por qué el reloj fue a la escuela? Porque quería aprender a dar la hora.",
-        "¿Qué le dijo la luna al sol? ¡Tanto tiempo sin vernos!",
-        "¿Por qué el mar nunca se seca? Porque no trabaja.",
-        "¿Qué hace un globo en una fiesta? ¡Globera!",
-        "¿Por qué los fantasmas no mienten? Porque se les ve a través.",
-        "¿Cómo se dice migraña en japonés? Tan-kemato.",
-        "¿Qué hace un plátano en una fiesta? ¡Baila la banana!",
-        "¿Por qué el perro se sentó en la fotocopiadora? Para sacar copias perrunas.",
-        "¿Cómo se llama el primo vegano de Bruce Lee? Broco Lee.",
-        "¿Qué hace una roca en el cine? ¡Ve la película!",
-        "¿Qué le dijo el cero al ocho? Bonito cinturón.",
-        "¿Cómo se despide un vaquero? ¡Adiós vaquero!",
-        "¿Qué le dice el viento a una hoja? ¡Vamos a volar!"
-    ];
-    const chiste = chistes[Math.floor(Math.random() * chistes.length)];
-    responder(chiste);
-    return;
-}
-
+    if (texto.includes("cuéntame un chiste") || texto.includes("dime un chiste") || texto.includes("chiste")) {
+        const chistes = [
+            "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
+            "¿Qué le dice una iguana a su hermana gemela? ¡Iguanita!",
+            "¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
+            "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
+            "¿Por qué el libro de matemáticas se deprimió? Porque tenía demasiados problemas."
+        ];
+        const chiste = chistes[Math.floor(Math.random() * chistes.length)];
+        responder(chiste);
+        return;
+    }
 
     if (texto.includes("dame un dato curioso") || texto.includes("cuéntame algo curioso") || texto.includes("dato curioso")) {
         const datos = [
@@ -142,57 +96,12 @@ if (texto.includes("cuéntame un chiste") || texto.includes("dime un chiste") ||
             "Los pulpos tienen tres corazones y sangre azul.",
             "El corazón de una ballena azul puede pesar tanto como un auto pequeño.",
             "Los flamencos rosados nacen grises.",
-            "Las mariposas saborean con sus patas.",
-            "Los tiburones han existido desde antes que los árboles.",
-            "Las jirafas no tienen cuerdas vocales.",
-            "Un solo rayo contiene suficiente energía para tostar 100,000 rebanadas de pan.",
-            "Los caracoles pueden dormir hasta tres años.",
-            "El ADN humano es un 60% igual al de los plátanos.",
-            "Los pingüinos tienen rodillas ocultas bajo sus plumas.",
-            "Las estrellas de mar no tienen cerebro.",
-            "El primer correo electrónico se envió en 1971.",
-            "Los koalas tienen huellas dactilares casi idénticas a las humanas.",
-            "Los gatos no pueden saborear lo dulce.",
-            "Una nube puede pesar más de un millón de kilogramos.",
-            "La miel nunca se echa a perder.",
-            "En Júpiter y Saturno podría llover diamantes.",
-            "Los humanos comparten aproximadamente un 50% del ADN con las vacas.",
-            "Los camarones pueden ver más colores que los humanos.",
-            "Los ojos de los avestruces son más grandes que su cerebro.",
-            "El sol representa el 99.86% de la masa del sistema solar.",
-            "Los dientes humanos son tan duros como los de un tiburón.",
-            "Los plátanos son ligeramente radiactivos.",
-            "Hay más estrellas en el universo que granos de arena en la Tierra.",
-            "Las cebras son negras con rayas blancas, no al revés.",
-            "El colibrí puede batir sus alas hasta 80 veces por segundo.",
-            "La nariz humana puede detectar más de un billón de olores.",
-            "Los bebés nacen sin rótulas en las rodillas.",
-            "La Tierra no es una esfera perfecta; está ligeramente achatada en los polos.",
-            "El animal más rápido en la Tierra es el halcón peregrino, no el guepardo.",
-            "Los delfines se llaman entre sí por nombres específicos.",
-            "Las hormigas no duermen.",
-            "Las vacas tienen mejores amigas y se estresan si se separan.",
-            "El chocolate era usado como moneda en la civilización azteca.",
-            "Las personas zurdas tienden a aprender a escribir mejor bajo el agua.",
-            "Las papas pueden absorber y reflejar señales WiFi.",
-            "El alfabeto hawaiano solo tiene 13 letras.",
-            "Los cuervos pueden recordar rostros y guardar rencor.",
-            "Los humanos brillamos en la oscuridad, pero nuestros ojos no lo pueden ver.",
-            "El 20% del oxígeno del planeta lo produce el Amazonas.",
-            "Los peces payaso nacen macho y pueden cambiar de sexo.",
-            "Una cucaracha puede vivir semanas sin cabeza.",
-            "El Monte Everest crece unos 4 mm cada año.",
-            "Los gatos pueden hacer más de 100 sonidos vocales.",
-            "El papel se puede doblar como máximo 7 veces (con fuerza humana normal).",
-            "Los astronautas no pueden eructar en el espacio.",
-            "Las ovejas tienen excelente memoria facial.",
-            "El agua caliente se congela más rápido que el agua fría, se llama efecto Mpemba."
+            "Las mariposas saborean con sus patas."
         ];
         const dato = datos[Math.floor(Math.random() * datos.length)];
         responder(dato);
         return;
     }
-    
 
     const operacion = procesarOperacionMatematica(texto);
     if (operacion) {
