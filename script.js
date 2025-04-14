@@ -151,7 +151,7 @@ function generarRespuesta(texto) {
         return "No tengo un deporte favorito, pero me gustaría saber cuál es el tuyo.";
     }
     else if (texto.includes("cuál es tu animal favorito") || texto.includes("qué animal te gusta") || texto.includes("qué animal prefieres")) {
-        return "No tengo un animal favorito, pero me gustaría saber cuál es el tuyo.";
+        return "No tengo un animal favorito, pero me gustaría saber cuál es el tuyo :).";
     } else if (texto.includes("adiós") || texto.includes("hasta luego") || texto.includes("nos vemos") || texto.includes("chao") || texto.includes("hasta pronto")) {
         return `Hasta luego, ${nombre}. Cuídate mucho.`;
     } else if (texto.includes("cuál es tu nombre") || texto.includes("cómo te llamas") || texto.includes("quién eres") || texto.includes("qué nombre tienes")) {
