@@ -55,17 +55,6 @@ reconocimiento.onresult = async (event) => {
         }
     }
 
-    // Buscar tema en la pregunta
-    if (texto.includes("sabes acerca de") || texto.includes("qué es")) {
-        // Extraer la palabra clave después de "sabes acerca de" o "qué es"
-        const temaBuscado = texto.replace("sabes acerca de", "").replace("qué es", "").trim();
-        if (temaBuscado) {
-            // Llamar a la API de Wikipedia para buscar información
-            obtenerInformacionDeWikipedia(temaBuscado);
-            return;
-        }
-    }
-
     // Otras respuestas como las operaciones matemáticas
     const operacion = procesarOperacionMatematica(texto);
     if (operacion) {
@@ -78,31 +67,6 @@ reconocimiento.onresult = async (event) => {
     responder(respuesta);
 };
 
-// Función para obtener información de Wikipedia
-async function obtenerInformacionDeWikipedia(tema) {
-    try {
-        const url = `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(tema)}`;
-        console.log("URL de la API:", url);  // Verifica si la URL es correcta
-        
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error("No se pudo obtener la información");
-        }
-
-        const data = await response.json();
-
-        console.log("Respuesta de Wikipedia:", data);  // Verifica si estamos recibiendo los datos correctamente
-
-        if (data && data.extract) {
-            responder(data.extract);
-        } else {
-            responder("Lo siento, no encontré información sobre ese tema.");
-        }
-    } catch (error) {
-        console.error("Error al obtener información de Wikipedia:", error); // Verifica el error
-        responder("Hubo un error al obtener la información.");
-    }
-}
 
 function responder(respuesta) {
     const voz = new SpeechSynthesisUtterance(respuesta);
