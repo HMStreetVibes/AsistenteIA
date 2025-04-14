@@ -1,78 +1,80 @@
-const botonHablar = document.getElementById('hablar');
-const textoUsuario = document.getElementById('textoUsuario');
-const audioRespuesta = document.getElementById('respuestaAudio');
-const bubbles = document.getElementById('bubbles');
+// script.js
 
-// Aquí debes poner tu API key de OpenRouter.ai
-const API_KEY = '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'; // reemplaza esto con tu clave
+// API Key de OpenRouter (Asegúrate de reemplazar esto por tu propia API Key)
+const apiKey = "TU_API_KEY_AQUI";  // Reemplaza con tu clave de API de OpenRouter
 
-const reconocimiento = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-reconocimiento.lang = 'es-ES';
-reconocimiento.interimResults = false;
+// Función para hablar con la API de OpenRouter y obtener una respuesta
+async function obtenerRespuestaAI(mensajeUsuario) {
+    const url = "https://api.openrouter.ai/v1/chat/completions";  // URL de OpenRouter API
+    const headers = {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`,  // Token de autenticación
+    };
 
-let memoria = JSON.parse(localStorage.getItem('memoria')) || {
-    nombre: null,
-    datos: {}
-};
-
-function guardarMemoria() {
-    localStorage.setItem('memoria', JSON.stringify(memoria));
-}
-
-function limpiarMemoria(clave) {
-    if (clave === 'nombre') {
-        memoria.nombre = null;
-    } else if (memoria.datos[clave]) {
-        delete memoria.datos[clave];
-    }
-    guardarMemoria();
-}
-
-function borrarTodaMemoria() {
-    memoria = { nombre: null, datos: {} };
-    localStorage.removeItem('memoria');
-    guardarMemoria();
-}
-
-botonHablar.addEventListener('click', () => {
-    window.speechSynthesis.cancel();
-    textoUsuario.textContent = 'Escuchando...';
-    bubbles.style.display = 'flex';
-    reconocimiento.start();
-});
-
-reconocimiento.onresult = async (event) => {
-    let texto = event.results[0][0].transcript;
-    texto = texto.toLowerCase();
-    textoUsuario.textContent = 'Tú: ' + texto;
-    bubbles.style.display = 'none';
-
-    // Aquí le decimos a OpenRouter.ai que nos dé una respuesta inteligente
-    const respuesta = await obtenerRespuestaAI(texto);
-    responder(respuesta);
-};
-
-// Función para interactuar con OpenRouter.ai
-async function obtenerRespuestaAI(texto) {
-    const respuesta = await fetch('https://api.openrouter.ai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${API_KEY}`
-        },
-        body: JSON.stringify({
-            model: 'gpt-3.5-turbo', // Usa el modelo que más te convenga
-            messages: [{ role: 'user', content: texto }],
-            max_tokens: 150,
-        })
+    const body = JSON.stringify({
+        model: "gpt-3.5-turbo",  // El modelo de OpenRouter que vamos a usar
+        messages: [
+            {
+                role: "user",
+                content: mensajeUsuario
+            }
+        ]
     });
 
-    const data = await respuesta.json();
-    return data.choices[0].message.content;
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: headers,
+            body: body
+        });
+        
+        const data = await response.json();
+        return data.choices[0].message.content;  // Obtener la respuesta generada por la IA
+    } catch (error) {
+        console.error("Error al obtener la respuesta de la IA:", error);
+        return "Lo siento, hubo un error al procesar tu solicitud.";
+    }
 }
 
-function responder(respuesta) {
-    const voz = new SpeechSynthesisUtterance(respuesta);
-    window.speechSynthesis.speak(voz);
-    textoUsuario.textContent = `Asistente IA: ${respuesta}`;
+// Función para hablar con el asistente usando síntesis de voz
+function hablarConAsistente(respuesta) {
+    const utterance = new SpeechSynthesisUtterance(respuesta);
+    utterance.lang = "es-ES";  // Asegúrate de que la respuesta sea en español
+    speechSynthesis.speak(utterance);  // Reproducir la respuesta de la IA
 }
+
+// Función para manejar la entrada de voz del usuario
+document.getElementById("hablar").addEventListener("click", function() {
+    // Iniciar el reconocimiento de voz
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "es-ES";
+    recognition.start();
+
+    recognition.onresult = async function(event) {
+        const resultado = event.results[0][0].transcript;
+        document.getElementById("textoUsuario").innerText = "Has dicho: " + resultado;
+
+        // Mostrar las burbujas mientras se escucha
+        document.getElementById("bubbles").style.display = "block";
+
+        // Llamar a la función que obtiene la respuesta de IA usando OpenRouter
+        const respuestaAI = await obtenerRespuestaAI(resultado);
+
+        // Mostrar la respuesta en la pantalla
+        document.getElementById("textoUsuario").innerText = "Asistente dice: " + respuestaAI;
+
+        // Reproducir la respuesta con síntesis de voz
+        hablarConAsistente(respuestaAI);
+
+        // Detener las burbujas de escucha
+        document.getElementById("bubbles").style.display = "none";
+    };
+
+    recognition.onend = function() {
+        document.getElementById("bubbles").style.display = "none";  // Detener las burbujas de escucha
+    };
+
+    recognition.onspeechend = function() {
+        document.getElementById("bubbles").style.display = "none";  // Detener las burbujas de escucha
+    };
+});
