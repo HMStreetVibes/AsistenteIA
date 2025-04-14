@@ -44,6 +44,17 @@ reconocimiento.onresult = async (event) => {
     textoUsuario.textContent = 'Tú: ' + texto;
     bubbles.style.display = 'none';
 
+    // Detectar si se menciona "me llamo"
+    if (texto.includes("me llamo")) {
+        const nombreExtraido = texto.replace("me llamo", "").trim();
+        if (nombreExtraido) {
+            memoria.nombre = nombreExtraido;
+            guardarMemoria();
+            responder(`¡Hola ${nombreExtraido}! Ahora sé tu nombre.`);
+            return;
+        }
+    }
+
     // Buscar tema en la pregunta
     if (texto.includes("sabes acerca de") || texto.includes("qué es")) {
         // Extraer la palabra clave después de "sabes acerca de" o "qué es"
@@ -67,7 +78,6 @@ reconocimiento.onresult = async (event) => {
     responder(respuesta);
 };
 
-// Función para obtener información de Wikipedia
 // Función para obtener información de Wikipedia
 async function obtenerInformacionDeWikipedia(tema) {
     try {
@@ -93,7 +103,6 @@ async function obtenerInformacionDeWikipedia(tema) {
         responder("Hubo un error al obtener la información.");
     }
 }
-
 
 function responder(respuesta) {
     const voz = new SpeechSynthesisUtterance(respuesta);
