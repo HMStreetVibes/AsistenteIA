@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asistente IA</title>
 
+    <!-- Cargar CSS con versión dinámica para evitar caché -->
     <script>
         const cssLink = document.createElement('link');
         cssLink.rel = 'stylesheet';
@@ -25,6 +26,7 @@
         <audio id="respuestaAudio" controls style="display:none;"></audio>
     </div>
 
+    <!-- Cargar JS con versión dinámica para evitar caché -->
     <script>
         const script = document.createElement('script');
         script.src = 'script.js?v=' + new Date().getTime();
