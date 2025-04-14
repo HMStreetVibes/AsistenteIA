@@ -47,13 +47,6 @@ reconocimiento.onresult = async (event) => {
     textoUsuario.textContent = 'Tú: ' + texto;
     bubbles.style.display = 'none';
 
-    for (let entrada of memoria.aprendizaje) {
-        if (texto.includes(entrada.pregunta)) {
-            responder(elegirRespuesta(entrada.respuestas));
-            return;
-        }
-    }
-
     if (texto.includes("me llamo")) {
         const nombreExtraido = texto.replace("me llamo", "").trim();
         if (nombreExtraido) {
@@ -84,64 +77,64 @@ reconocimiento.onresult = async (event) => {
         return;
     }
 
-    if (texto.includes("cuéntame un chiste") || texto.includes("dime un chiste") || texto.includes("chiste")) {
-        const chistes = [
-            "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
-            "¿Qué le dice una iguana a su hermana gemela? ¡Iguanita!",
-            "¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
-            "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
-            "¿Por qué el libro de matemáticas se deprimió? Porque tenía demasiados problemas.",
-            "¿Por qué los esqueletos no pelean entre ellos? Porque no tienen agallas.",
-            "¿Qué le dice un jardinero a otro? ¡Disfrutemos mientras podamos!",
-            "¿Qué hace una vaca cuando sale el sol? Sombra.",
-            "¿Por qué no se puede discutir con un número impar? Porque no es par-ticipativo.",
-            "¿Cómo se llama el campeón de buceo japonés? Tokofondo.",
-            "¿Y el subcampeón? Kasitoko.",
-            "¿Por qué no juega al escondite el café? Porque siempre se encuentra en el fondo.",
-            "¿Qué le dijo un techo a otro? Techo de menos.",
-            "¿Por qué el tomate se sonrojó? Porque vio al otro desnudo.",
-            "¿Qué hace una computadora cuando tiene hambre? Se come un byte.",
-            "¿Cómo se despiden los químicos? Ácido un placer.",
-            "¿Por qué los peces no van a la escuela? Porque ya están en el agua.",
-            "¿Qué le dice una cebolla a otra? ¡Nos vemos en las lágrimas!",
-            "¿Cómo se dice pañuelo en japonés? Saka-moko.",
-            "¿Qué hace un pez? ¡Nada!",
-            "¿Qué le dijo una impresora a otra? ¿Esa hoja es tuya o es impresión mía?",
-            "¿Cuál es el café más peligroso del mundo? El ex-preso.",
-            "¿Qué le dice un gusano a otro gusano? Voy a dar una vuelta a la manzana.",
-            "¿Qué le dice un semáforo a otro? No me mires, me estoy cambiando.",
-            "¿Qué le dijo una escoba a otra? ¡Vamos a barrer!",
-            "¿Por qué los pájaros no usan WhatsApp? Porque ya tienen pío-pío.",
-            "¿Por qué lloraba el libro de historia? Porque estaba lleno de tragedias.",
-            "¿Qué hace un león en una biblioteca? Busca libros para rugir de risa.",
-            "¿Cómo se dice pelo sucio en chino? Chin cham pu.",
-            "¿Qué pasa si tiras un pato al agua? Nada.",
-            "¿Cuál es el colmo de un electricista? No encontrar su corriente de inspiración.",
-            "¿Cómo se dice despido en árabe? Tasalí.",
-            "¿Qué hace un perro con un taladro? Taladrando.",
-            "¿Qué le dice una pared a otra pared? Nos vemos en la esquina.",
-            "¿Por qué las focas miran siempre hacia arriba? ¡Porque ahí están los focos!",
-            "¿Cómo se llama el campeón de buceo ruso? Sinkalovsky.",
-            "¿Qué hace un pato con una pata? ¡Cojea!",
-            "¿Por qué el reloj fue a la escuela? Porque quería aprender a dar la hora.",
-            "¿Qué le dijo la luna al sol? ¡Tanto tiempo sin vernos!",
-            "¿Por qué el mar nunca se seca? Porque no trabaja.",
-            "¿Qué hace un globo en una fiesta? ¡Globera!",
-            "¿Por qué los fantasmas no mienten? Porque se les ve a través.",
-            "¿Cómo se dice migraña en japonés? Tan-kemato.",
-            "¿Qué hace un plátano en una fiesta? ¡Baila la banana!",
-            "¿Por qué el perro se sentó en la fotocopiadora? Para sacar copias perrunas.",
-            "¿Cómo se llama el primo vegano de Bruce Lee? Broco Lee.",
-            "¿Qué hace una roca en el cine? ¡Ve la película!",
-            "¿Qué le dijo el cero al ocho? Bonito cinturón.",
-            "¿Cómo se despide un vaquero? ¡Adiós vaquero!",
-            "¿Qué le dice el viento a una hoja? ¡Vamos a volar!"
-        ];
-        const chiste = chistes[Math.floor(Math.random() * chistes.length)];
-        responder(chiste);
-        return;
-    }
-    
+if (texto.includes("cuéntame un chiste") || texto.includes("dime un chiste") || texto.includes("chiste")) {
+    const chistes = [
+        "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.",
+        "¿Qué le dice una iguana a su hermana gemela? ¡Iguanita!",
+        "¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro.",
+        "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!",
+        "¿Por qué el libro de matemáticas se deprimió? Porque tenía demasiados problemas.",
+        "¿Por qué los esqueletos no pelean entre ellos? Porque no tienen agallas.",
+        "¿Qué le dice un jardinero a otro? ¡Disfrutemos mientras podamos!",
+        "¿Qué hace una vaca cuando sale el sol? Sombra.",
+        "¿Por qué no se puede discutir con un número impar? Porque no es par-ticipativo.",
+        "¿Cómo se llama el campeón de buceo japonés? Tokofondo.",
+        "¿Y el subcampeón? Kasitoko.",
+        "¿Por qué no juega al escondite el café? Porque siempre se encuentra en el fondo.",
+        "¿Qué le dijo un techo a otro? Techo de menos.",
+        "¿Por qué el tomate se sonrojó? Porque vio al otro desnudo.",
+        "¿Qué hace una computadora cuando tiene hambre? Se come un byte.",
+        "¿Cómo se despiden los químicos? Ácido un placer.",
+        "¿Por qué los peces no van a la escuela? Porque ya están en el agua.",
+        "¿Qué le dice una cebolla a otra? ¡Nos vemos en las lágrimas!",
+        "¿Cómo se dice pañuelo en japonés? Saka-moko.",
+        "¿Qué hace un pez? ¡Nada!",
+        "¿Qué le dijo una impresora a otra? ¿Esa hoja es tuya o es impresión mía?",
+        "¿Cuál es el café más peligroso del mundo? El ex-preso.",
+        "¿Qué le dice un gusano a otro gusano? Voy a dar una vuelta a la manzana.",
+        "¿Qué le dice un semáforo a otro? No me mires, me estoy cambiando.",
+        "¿Qué le dijo una escoba a otra? ¡Vamos a barrer!",
+        "¿Por qué los pájaros no usan WhatsApp? Porque ya tienen pío-pío.",
+        "¿Por qué lloraba el libro de historia? Porque estaba lleno de tragedias.",
+        "¿Qué hace un león en una biblioteca? Busca libros para rugir de risa.",
+        "¿Cómo se dice pelo sucio en chino? Chin cham pu.",
+        "¿Qué pasa si tiras un pato al agua? Nada.",
+        "¿Cuál es el colmo de un electricista? No encontrar su corriente de inspiración.",
+        "¿Cómo se dice despido en árabe? Tasalí.",
+        "¿Qué hace un perro con un taladro? Taladrando.",
+        "¿Qué le dice una pared a otra pared? Nos vemos en la esquina.",
+        "¿Por qué las focas miran siempre hacia arriba? ¡Porque ahí están los focos!",
+        "¿Cómo se llama el campeón de buceo ruso? Sinkalovsky.",
+        "¿Qué hace un pato con una pata? ¡Cojea!",
+        "¿Por qué el reloj fue a la escuela? Porque quería aprender a dar la hora.",
+        "¿Qué le dijo la luna al sol? ¡Tanto tiempo sin vernos!",
+        "¿Por qué el mar nunca se seca? Porque no trabaja.",
+        "¿Qué hace un globo en una fiesta? ¡Globera!",
+        "¿Por qué los fantasmas no mienten? Porque se les ve a través.",
+        "¿Cómo se dice migraña en japonés? Tan-kemato.",
+        "¿Qué hace un plátano en una fiesta? ¡Baila la banana!",
+        "¿Por qué el perro se sentó en la fotocopiadora? Para sacar copias perrunas.",
+        "¿Cómo se llama el primo vegano de Bruce Lee? Broco Lee.",
+        "¿Qué hace una roca en el cine? ¡Ve la película!",
+        "¿Qué le dijo el cero al ocho? Bonito cinturón.",
+        "¿Cómo se despide un vaquero? ¡Adiós vaquero!",
+        "¿Qué le dice el viento a una hoja? ¡Vamos a volar!"
+    ];
+    const chiste = chistes[Math.floor(Math.random() * chistes.length)];
+    responder(chiste);
+    return;
+}
+
 
     if (texto.includes("dame un dato curioso") || texto.includes("cuéntame algo curioso") || texto.includes("dato curioso")) {
         const datos = [
@@ -199,8 +192,7 @@ reconocimiento.onresult = async (event) => {
         responder(dato);
         return;
     }
-
-    preguntarAprendizaje(texto);
+    
 
     const operacion = procesarOperacionMatematica(texto);
     if (operacion) {
@@ -216,26 +208,6 @@ function responder(respuesta) {
     const voz = new SpeechSynthesisUtterance(respuesta);
     window.speechSynthesis.speak(voz);
     textoUsuario.textContent = `Asistente IA: ${respuesta}`;
-}
-
-function preguntarAprendizaje(pregunta) {
-    const respuestaUsuario = prompt(`No sé cómo responder a: "${pregunta}". ¿Qué debería decir la próxima vez?`);
-    if (respuestaUsuario) {
-        // Verificar si ya hay una entrada similar
-        let entrada = memoria.aprendizaje.find(e => pregunta.includes(e.pregunta));
-        if (entrada) {
-            entrada.respuestas.push(respuestaUsuario);
-        } else {
-            memoria.aprendizaje.push({
-                pregunta: pregunta,
-                respuestas: [respuestaUsuario]
-            });
-        }
-        guardarMemoria();
-        responder("Gracias por enseñarme. Lo recordaré.");
-    } else {
-        responder("Está bien, intentaré aprender en otro momento.");
-    }
 }
 
 function procesarOperacionMatematica(texto) {
