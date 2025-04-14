@@ -102,8 +102,7 @@ function generarRespuesta(texto) {
         return `Hola ${nombre}, ¿cómo estás?`;
     } else if (texto.includes("qué tal") || texto.includes("cómo va") || texto.includes("cómo te va")) {
         return `Todo bien, gracias. ¿Y tú?`;
-    }
-    else if (texto.includes("qué haces") || texto.includes("qué estás haciendo") || texto.includes("en qué estás trabajando")) {
+    } else if (texto.includes("qué haces") || texto.includes("qué estás haciendo") || texto.includes("en qué estás trabajando")) {
         return "Estoy aquí para ayudarte. ¿En qué puedo asistirte hoy?";
     } else if (texto.includes("cuál es tu hobby") || texto.includes("qué te gusta hacer") || texto.includes("qué haces en tu tiempo libre")) {
         return "Me gusta aprender de tus preguntas y ayudarte en lo que pueda.";
@@ -113,8 +112,7 @@ function generarRespuesta(texto) {
         return "No tengo un libro favorito, pero me gustaría saber cuál es el tuyo.";
     } else if (texto.includes("cuál es tu deporte favorito") || texto.includes("qué deporte te gusta") || texto.includes("qué deporte prefieres")) {
         return "No tengo un deporte favorito, pero me gustaría saber cuál es el tuyo.";
-    }
-    else if (texto.includes("cual es tu animal favorito") || texto.includes("qué animal te gusta") || texto.includes("qué animal prefieres")) {
+    } else if (texto.includes("cual es tu animal favorito") || texto.includes("qué animal te gusta") || texto.includes("qué animal prefieres")) {
         return "No tengo un animal favorito, pero me gustaría saber cuál es el tuyo :).";
     } else if (texto.includes("adiós") || texto.includes("hasta luego") || texto.includes("nos vemos") || texto.includes("chao") || texto.includes("hasta pronto")) {
         return `Hasta luego, ${nombre}. Cuídate mucho.`;
