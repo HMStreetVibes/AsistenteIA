@@ -1,7 +1,6 @@
 // script.js
-
-// API Key de OpenRouter (Asegúrate de reemplazar esto por tu propia API Key)
-const apiKey = "TU_API_KEY_AQUI";  // Reemplaza con tu clave de API de OpenRouter
+// Este script maneja la interacción con el asistente de voz utilizando la API de OpenRouter y la síntesis de voz del navegador.
+const apiKey = "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";
 
 // Función para hablar con la API de OpenRouter y obtener una respuesta
 async function obtenerRespuestaAI(mensajeUsuario) {
@@ -12,7 +11,7 @@ async function obtenerRespuestaAI(mensajeUsuario) {
     };
 
     const body = JSON.stringify({
-        model: "gpt-3.5-turbo",  // El modelo de OpenRouter que vamos a usar
+        model: "gpt-3.5-turbo",  // El modelo de OpenRouter
         messages: [
             {
                 role: "user",
@@ -27,9 +26,15 @@ async function obtenerRespuestaAI(mensajeUsuario) {
             headers: headers,
             body: body
         });
-        
+
         const data = await response.json();
-        return data.choices[0].message.content;  // Obtener la respuesta generada por la IA
+
+        console.log("Respuesta de la API: ", data); 
+        if (data && data.choices && data.choices[0]) {
+            return data.choices[0].message.content;  
+        } else {
+            return "Lo siento, no pude procesar tu solicitud.";
+        }
     } catch (error) {
         console.error("Error al obtener la respuesta de la IA:", error);
         return "Lo siento, hubo un error al procesar tu solicitud.";
@@ -38,6 +43,7 @@ async function obtenerRespuestaAI(mensajeUsuario) {
 
 // Función para hablar con el asistente usando síntesis de voz
 function hablarConAsistente(respuesta) {
+    console.log("Respondiendo con voz: ", respuesta);  // Verificar el texto que se va a hablar
     const utterance = new SpeechSynthesisUtterance(respuesta);
     utterance.lang = "es-ES";  // Asegúrate de que la respuesta sea en español
     speechSynthesis.speak(utterance);  // Reproducir la respuesta de la IA
@@ -59,6 +65,8 @@ document.getElementById("hablar").addEventListener("click", function() {
 
         // Llamar a la función que obtiene la respuesta de IA usando OpenRouter
         const respuestaAI = await obtenerRespuestaAI(resultado);
+
+        console.log("Respuesta de la IA: ", respuestaAI);  // Verificar que la respuesta es la esperada
 
         // Mostrar la respuesta en la pantalla
         document.getElementById("textoUsuario").innerText = "Asistente dice: " + respuestaAI;
