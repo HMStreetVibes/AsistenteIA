@@ -232,6 +232,87 @@ function generarRespuesta(texto) {
     const hoy = new Date();
     const nombre = memoria.nombre ? memoria.nombre : "amigo";
 
+    if (texto.includes("dame un consejo sobre") || texto.includes("dame un consejo acerca de") || texto.includes("un consejo de")) {
+        const temas = {
+            "amistad": [
+                "Rodéate de personas que te inspiren a ser mejor y que estén contigo en los buenos y malos momentos.",
+                "La amistad verdadera se construye con confianza y tiempo, no con palabras vacías.",
+                "Sé un buen amigo, pero también recuerda ser sincero, incluso cuando no te convenga.",
+            ],
+            "amor": [
+                "El amor propio es la base para amar a los demás. No lo olvides.",
+                "No busques el amor en otra persona si aún no te amas a ti mismo.",
+                "El amor verdadero no es perfecto, pero es sincero y recíproco.",
+            ],
+            "salud": [
+                "Pequeños hábitos diarios como caminar, dormir bien y tomar agua pueden cambiar tu vida.",
+                "Recuerda que la salud no es solo la ausencia de enfermedad, es bienestar físico, mental y emocional.",
+                "Un cuerpo saludable necesita una mente tranquila. No subestimes el poder de la calma."
+            ],
+            "estudios": [
+                "No estudies más, estudia mejor. La calidad del estudio vale más que la cantidad.",
+                "Organiza tu tiempo y estudia con propósito, no con presión.",
+                "Haz pausas mientras estudias, tu cerebro necesita descanso para rendir al máximo."
+            ],
+            "trabajo": [
+                "Haz lo que amas, y si no puedes aún, ama lo que haces mientras llegas a ello.",
+                "A veces, el trabajo en equipo te enseña más que trabajar solo.",
+                "No se trata solo de trabajar duro, sino de trabajar de manera inteligente."
+            ],
+            "familia": [
+                "Aprecia los momentos con tu familia, el tiempo no se recupera.",
+                "La familia te puede apoyar en los momentos más difíciles, nunca la des por sentada.",
+                "Recuerda que, en momentos difíciles, lo que realmente importa es estar rodeado de los que te quieren."
+            ],
+            "dinero": [
+                "Gasta menos de lo que ganas y ahorra un poco cada mes, incluso si es poco.",
+                "No es cuánto ganas, sino cuánto ahorras lo que te permitirá tener estabilidad.",
+                "El dinero no compra la felicidad, pero la libertad financiera sí te da muchas opciones."
+            ],
+            "motivación": [
+                "El primer paso no te lleva a donde quieres ir, pero te saca de donde estás.",
+                "La motivación es como un fuego, debes avivarlo todos los días.",
+                "Los grandes logros comienzan con un primer paso. No te detengas."
+            ],
+            "fracaso": [
+                "Fracasar no es lo contrario al éxito, es parte del camino.",
+                "Cada fracaso es una oportunidad de aprendizaje, no lo veas como el fin.",
+                "No tengas miedo al fracaso, tienes el derecho de intentar tantas veces como sea necesario."
+            ],
+            "ansiedad": [
+                "Respira profundo, vive el momento y recuerda que no todo tiene que estar bajo control.",
+                "Haz lo mejor que puedas, y recuerda que no todo depende de ti.",
+                "La ansiedad es el miedo al futuro. Concéntrate en lo que puedes hacer ahora."
+            ],
+            "autoestima": [
+                "Tú eres suficiente. No necesitas ser perfecto para ser increíble.",
+                "Haz cosas que te hagan sentir bien contigo mismo, no con los demás.",
+                "La autoestima no depende de lo que los demás piensen de ti, sino de lo que tú pienses de ti mismo."
+            ],
+            "creatividad": [
+                "No tengas miedo a hacer el ridículo, ahí vive la genialidad.",
+                "La creatividad es la inteligencia divirtiéndose. No pongas límites a tu imaginación.",
+                "Para ser creativo, es importante salir de tu zona de confort y probar nuevas ideas."
+            ]
+        };
+
+        let encontrado = false;
+        for (let tema in temas) {
+            if (texto.includes(tema)) {
+                const consejos = temas[tema];
+                const consejoAleatorio = consejos[Math.floor(Math.random() * consejos.length)];
+                responder(`${tema.charAt(0).toUpperCase() + tema.slice(1)}: ${consejoAleatorio}`);
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            responder("Lo siento, aún no tengo un consejo para ese tema. Prueba con otro como amor, salud o motivación.");
+        }
+        return;
+    }
+
     if (texto.includes("hola") || texto.includes("buenos días") || texto.includes("buenas tardes") || texto.includes("buenas noches") || texto.includes("qué tal") || texto.includes("qué onda") || texto.includes("cómo estás") || texto.includes("qué hay") || texto.includes("cómo te va")) {
         return `¡Hola ${nombre}, ¿cómo estás?`;
     } else if (texto.includes("cómo va todo") || texto.includes("qué tal todo") || texto.includes("cómo te encuentras") || texto.includes("qué tal te va") || texto.includes("todo bien")) {
@@ -264,17 +345,7 @@ function generarRespuesta(texto) {
         return `Son las ${hoy.getHours()} con ${hoy.getMinutes()} minutos.`;
     } else if (texto.includes("qué día es hoy") || texto.includes("día de hoy") || texto.includes("fecha") || texto.includes("cuál es la fecha") || texto.includes("qué fecha es hoy")) {
         return `Hoy es ${hoy.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.`;
-    } else if (texto.includes("cuántos años tienes") || texto.includes("edad") || texto.includes("qué edad tienes") || texto.includes("qué años tienes") || texto.includes("cuántos años cumples")) {
-        return "No tengo edad como los humanos, pero siempre estoy aprendiendo.";
-    } else if (texto.includes("quién te creó") || texto.includes("quién eres") || texto.includes("de dónde vienes") || texto.includes("quién te hizo") || texto.includes("quién es tu creador")) {
-        return "Fui creado por Eduardo, un desarrollador muy creativo.";
-    } else if (texto.includes("puedes ayudarme") || texto.includes("ayuda") || texto.includes("necesito ayuda") || texto.includes("me puedes ayudar") || texto.includes("quiero ayuda")) {
-        return "Claro, dime en qué necesitas ayuda.";
-    } else if (texto.includes("dónde estás") || texto.includes("dónde te encuentras") || texto.includes("dónde vives") || texto.includes("en qué lugar estás") || texto.includes("dónde te ubicas")) {
-        return "Estoy en tu dispositivo, ¡siempre contigo!";
-    } else if (texto.includes("cuál es tu color favorito") || texto.includes("cuál es tu color preferido") || texto.includes("cuál es el color que te gusta") || texto.includes("qué color te gusta")) {
-        return "Me gustan todos los colores por igual, pero me alegra saber cuál es tu favorito.";
     }
-
-    return "No entendí muy bien eso. ¿Puedes repetirlo de otra forma?";
+    return "No entiendo lo que dices. ¿Puedes reformularlo?";
 }
+
