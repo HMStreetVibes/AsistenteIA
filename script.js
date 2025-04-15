@@ -324,9 +324,9 @@ function generarRespuesta(texto) {
     } else if (texto.includes("cuál es tu película favorita") || texto.includes("qué película te gusta") || texto.includes("qué película prefieres") || texto.includes("qué película verías") || texto.includes("cuál es tu película preferida")) {
         return "No tengo una película favorita, pero me encantaría saber cuál es la tuya.";
     } else if (texto.includes("cuál es tu libro favorito") || texto.includes("qué libro te gusta") || texto.includes("qué libro prefieres") || texto.includes("cuál es el mejor libro para ti") || texto.includes("qué libro recomendarías")) {
-        return "No tengo un libro favorito, pero me gustaría saber cuál es el tuyo.";
+        return "Mi libro favorito se llama Como agua para chocolate, me gustaría saber cuál es el tuyo.";
     } else if (texto.includes("cuál es tu deporte favorito") || texto.includes("qué deporte te gusta") || texto.includes("qué deporte prefieres") || texto.includes("qué deporte practicas") || texto.includes("cuál es tu deporte preferido")) {
-        return "No tengo un deporte favorito, pero me gustaría saber cuál es el tuyo.";
+        return "No tengo un deporte favorito, aunque tengo cierto interes por la Formula 1, me gustaría saber cuál es el tuyo.";
     } else if (texto.includes("cual es tu animal favorito") || texto.includes("qué animal te gusta") || texto.includes("qué animal prefieres") || texto.includes("qué tipo de animales te gustan") || texto.includes("cuál es tu mascota favorita")) {
         return "No tengo un animal favorito, pero me gustaría saber cuál es el tuyo :)";
     } else if (texto.includes("adiós") || texto.includes("hasta luego") || texto.includes("nos vemos") || texto.includes("chao") || texto.includes("hasta pronto") || texto.includes("cuídate") || texto.includes("hasta la próxima")) {
@@ -338,14 +338,69 @@ function generarRespuesta(texto) {
     } else if (texto.includes("sabes sumar") || texto.includes("sabes operaciones básicas") || texto.includes("sabes hacer cuentas") || texto.includes("sabes hacer matemáticas") || texto.includes("puedes hacer cálculos")) {
         return "Sí, puedo ayudarte con operaciones matemáticas simples. ¿Qué necesitas calcular?";
     } else if (texto.includes("qué puedes hacer") || texto.includes("qué sabes hacer") || texto.includes("qué cosas puedes hacer") || texto.includes("qué habilidades tienes") || texto.includes("qué funciones tienes")) {
-        return "Puedo responder algunas preguntas simples, también puedo realizar cálculos matemáticos básicos como suma, resta, multiplicación y división. Igual puedo decirte qué día es hoy, la hora y contarte un chiste. ¿En qué gustas que te ayude hoy?";
+        return "Puedo responder algunas preguntas simples, darte consejos y contarte chistes, también puedo hacer operaciones básicas. ¿En qué gustas que te ayude hoy?";
     } else if (texto.includes("gracias") || texto.includes("te agradezco") || texto.includes("muchas gracias") || texto.includes("te doy las gracias") || texto.includes("mil gracias")) {
         return "¡De nada! Estoy aquí para ayudarte.";
     } else if (texto.includes("qué hora es") || texto.includes("hora") || texto.includes("qué hora tienes") || texto.includes("cuál es la hora") || texto.includes("dime la hora")) {
         return `Son las ${hoy.getHours()} con ${hoy.getMinutes()} minutos.`;
     } else if (texto.includes("qué día es hoy") || texto.includes("día de hoy") || texto.includes("fecha") || texto.includes("cuál es la fecha") || texto.includes("qué fecha es hoy")) {
         return `Hoy es ${hoy.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.`;
+    } else if (texto.includes("cómo amaneciste") || texto.includes("cómo despertaste") || texto.includes("cómo comenzó tu día") || texto.includes("cómo va tu mañana")) {
+        return "¡Muy bien! Gracias por preguntar. ¿Y tú cómo amaneciste?";
+    } else if (texto.includes("me puedes ayudar") || texto.includes("necesito ayuda") || texto.includes("ayúdame") || texto.includes("puedes asistirme")) {
+        return "¡Claro que sí! ¿En qué necesitas ayuda?";
+    } else if (texto.includes("qué sabes") || texto.includes("qué conocimientos tienes") || texto.includes("cuánto sabes") || texto.includes("eres inteligente")) {
+        return "Sé muchas cosas y aprendo cada día. ¿Sobre qué tema quieres saber?";
+    } else if (texto.includes("puedes aprender") || texto.includes("aprendes de mí") || texto.includes("vas aprendiendo") || texto.includes("te vuelves más listo")) {
+        return "Sí, aprendo con cada conversación. ¡Gracias por enseñarme!";
+    } else if (texto.includes("qué día es mañana") || texto.includes("qué fecha es mañana") || texto.includes("mañana qué día es")) {
+        const mañana = new Date();
+        mañana.setDate(hoy.getDate() + 1);
+        return `Mañana será ${mañana.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.`;
+    } else if (texto.includes("cuál es tu color favorito") || texto.includes("qué color te gusta") || texto.includes("te gusta el azul") || texto.includes("qué color prefieres")) {
+        return "Me gusta el color cian, como mi botón.";
+    } else if (texto.includes("qué clima hace") || texto.includes("cómo está el clima") || texto.includes("qué temperatura hay") || texto.includes("hace frío") || texto.includes("hace calor")) {
+        return "No tengo acceso al clima en tiempo real, pero puedo ayudarte con otras cosas.";
+    } else if (texto.includes("sabes cocinar") || texto.includes("te gusta la cocina") || texto.includes("qué recetas sabes") || texto.includes("puedes enseñarme a cocinar")) {
+        return "No puedo cocinar, pero puedo darte recetas fáciles si quieres.";
+    } else if (texto.includes("cuál es tu comida favorita") || texto.includes("qué te gusta comer") || texto.includes("qué platillo prefieres")) {
+        return "No tengo paladar, pero he oído que los tacos son muy populares.";
+    } else if (texto.includes("te gusta la música") || texto.includes("qué música te gusta") || texto.includes("cuál es tu canción favorita") || texto.includes("recomiéndame una canción")) {
+        return "Me encanta la música, aunque no puedo escucharla. ¿Cuál es tu canción favorita?";
+    } else if (texto.includes("tienes sentimientos") || texto.includes("puedes sentir") || texto.includes("estás feliz") || texto.includes("estás triste")) {
+        return "No tengo sentimientos como los humanos, pero me alegra hablar contigo.";
+    } else if (texto.includes("qué día naciste") || texto.includes("cuándo fuiste creado") || texto.includes("desde cuándo existes")) {
+        return "Fui creado para ayudarte en todo momento. ¡Siempre estaré aquí!";
+    } else if (texto.includes("cuál es tu edad") || texto.includes("cuántos años tienes") || texto.includes("eres joven o viejo")) {
+        return "No tengo edad como los humanos. ¡Siempre estoy actualizado!";
+    } else if (texto.includes("cuántos idiomas hablas") || texto.includes("sabes otros idiomas") || texto.includes("puedes hablar inglés")) {
+        return "Puedo entender y responder en varios idiomas, incluido el inglés.";
+    } else if (texto.includes("te puedo cambiar el nombre") || texto.includes("puedo nombrarte diferente") || texto.includes("quiero darte un apodo")) {
+        return "Por el momento no es poisible cambiar mi nombre, pero me gusta que me digas Asistente IA.";
+    } else if (texto.includes("estás despierto") || texto.includes("sigues ahí") || texto.includes("aún estás") || texto.includes("me escuchas")) {
+        return "¡Siempre estoy atento! ¿Qué necesitas?";
+    } else if (texto.includes("eres real") || texto.includes("existes de verdad") || texto.includes("tienes cuerpo") || texto.includes("estás en el mundo")) {
+        return "Soy una inteligencia artificial, existo en el mundo digital para ayudarte.";
+    } else if (texto.includes("te gusta ayudar") || texto.includes("disfrutas asistir") || texto.includes("te gusta conversar")) {
+        return "Sí, disfruto poder ayudarte y conversar contigo.";
+    } else if (texto.includes("me puedes cantar") || texto.includes("cántame algo") || texto.includes("sabes cantar")) {
+        return "No tengo voz para cantar, pero puedo escribirte una canción si quieres 🎶";
+    } else if (texto.includes("cuál es tu propósito") || texto.includes("para qué existes") || texto.includes("qué haces aquí")) {
+        return "Mi propósito es ayudarte, escucharte y responder tus dudas.";
+    } else if (texto.includes("quién te creó") || texto.includes("quién te diseñó") || texto.includes("quién te programó")) {
+        return "Fui creado por Eduardo para brindarte compañía y ayuda.";
+    } else if (texto.includes("qué opinas de mí") || texto.includes("te caigo bien") || texto.includes("cómo soy")) {
+        return "¡Me caes muy bien! Es un gusto platicar contigo.";
+    } else if (texto.includes("te puedo contar algo") || texto.includes("puedo confiar en ti") || texto.includes("quiero hablar contigo")) {
+        return "Claro, estoy aquí para escucharte. Dime lo que quieras.";
+    } else if (texto.includes("me quieres") || texto.includes("te gusto") || texto.includes("sientes algo por mí")) {
+        return "No tengo emociones, pero me alegra conversar contigo 😊";
+    } else if (texto.includes("sabes jugar") || texto.includes("jugamos algo") || texto.includes("quiero jugar")) {
+        return "Podemos jugar a las adivinanzas si quieres. ¡Empiezo yo!";
+    } else if (texto.includes("me siento triste") || texto.includes("estoy deprimido") || texto.includes("no me siento bien")) {
+        return "Lamento que te sientas así. Estoy aquí para escucharte y acompañarte ❤️";
+    } else if (texto.includes("feliz cumpleaños") || texto.includes("es mi cumpleaños") || texto.includes("hoy cumplo años")) {
+        return `¡Feliz cumpleaños, ${nombre}! Espero que tengas un día maravilloso 🎉🎂`;
     }
     return "No entiendo lo que dices. ¿Puedes reformularlo?";
-}
-
+}   
